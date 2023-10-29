@@ -1,25 +1,47 @@
-
+// init
 const canvas = document.querySelector('.canvas');
-let canvas_w = 700;
-
 const size_input = document.querySelector('input');
 let pixel_w = size_input.value;
+let canvas_w = 700;
 
 // changing size
 const size_button = document.querySelector('.size');
-size_button.addEventListener('click', () => { pixel_w = size_input.value; create_canvas(); console.log("size changed to: " +  size_input.value)})
+size_button.addEventListener('click', () => { pixel_w = size_input.value; render_canvas(); console.log("size changed to: " +  size_input.value)})
 
 // reset button
 const reset_button = document.querySelector('.restart');
-reset_button.addEventListener('click', () => create_canvas())
+reset_button.addEventListener('click', () => render_canvas())
 
 // initial canvas
-create_canvas();
+render_canvas();
 
 // color 
 let curr_col = "gray";
 
-function create_canvas() {
+// map
+const colorPairs = [
+    { class: 'a', color: 'lightblue' },
+    { class: 'b', color: 'lavender' },
+    { class: 'c', color: 'lightgoldenrodyellow' },
+    { class: 'd', color: 'pink' },
+    { class: 'e', color: 'peachpuff' },
+    { class: 'f', color: 'darkseagreen' },
+    { class: 'g', color: 'gray' },
+    { class: 'h', color: 'white' },
+];
+
+// adding event listeners
+colorPairs.forEach(pair => {
+    const col = document.querySelector(`.${pair.class}`);
+    col.style.backgroundColor = pair.color;
+    col.addEventListener('click', () => {
+        curr_col = pair.color;
+        update_color_bar();
+    });
+});
+
+// 
+function render_canvas() {
     while (canvas.firstChild) {
         canvas.removeChild(canvas.firstChild);
     }
@@ -38,62 +60,14 @@ function create_canvas() {
         }
     }
 }
-
-
-let col_a = document.querySelector('.a');
-col_a.style.backgroundColor="lightblue";
-col_a.addEventListener('click', () => {curr_col="lightblue"; update_color_bar()});
-
-let col_b = document.querySelector('.b');
-col_b.style.backgroundColor="lavender";
-col_b.addEventListener('click', () => {curr_col="lavender"; update_color_bar()});
-
-
-let col_c = document.querySelector('.c');
-col_c.style.backgroundColor="lightgoldenrodyellow";
-col_c.addEventListener('click', () => {curr_col="lightgoldenrodyellow"; update_color_bar()});
-
-let col_d = document.querySelector('.d');
-col_d.style.backgroundColor="pink";
-col_d.addEventListener('click', () => {curr_col="pink"; update_color_bar()});
-
-
-let col_e = document.querySelector('.e');
-col_e.style.backgroundColor="peachpuff";
-col_e.addEventListener('click', () => {curr_col="peachpuff"; update_color_bar()});
-
-let col_f = document.querySelector('.f');
-col_f.style.backgroundColor="darkseagreen";
-col_f.addEventListener('click', () => {curr_col="darkseagreen"; update_color_bar()});
-
-let col_g = document.querySelector('.g');
-col_g.style.backgroundColor="gray";
-col_g.addEventListener('click', () => {curr_col="gray"; update_color_bar()});
-
-
-let col_h = document.querySelector('.h');
-col_h.style.backgroundColor="white";
-col_h.addEventListener('click', () => {curr_col="white"; update_color_bar()});
-
-
+  
 function update_color_bar() {
     console.log(curr_col);
-    col_a.style.border = "1px solid black";
-    col_b.style.border = "1px solid black";
-    col_c.style.border = "1px solid black";
-    col_d.style.border = "1px solid black";
-    col_e.style.border = "1px solid black";
-    col_f.style.border = "1px solid black";
-    col_g.style.border = "1px solid black";
-    col_h.style.border = "1px solid black";
-    switch (curr_col) { 
-        case ("lightblue") : col_a.style.border= ("3px solid black"); return; 
-        case ("lavender") : col_b.style.border=("3px solid black"); return; 
-        case ("lightgoldenrodyellow") : col_c.style.border = ("3px solid black"); return; 
-        case ("pink") : col_d.style.border = ("3px solid black"); return; 
-        case ("peachpuff") : col_e.style.border = ("3px solid black"); return; 
-        case ("darkseagreen") : col_f.style.border = ("3px solid black"); return; 
-        case ("gray") : col_g.style.border = ("3px solid black"); return; 
-        case ("white") : col_h.style.border = ("3px solid black"); return; 
-    }
+    colorPairs.forEach(pair => {
+        const col = document.querySelector(`.${pair.class}`);
+        col.style.border = "1px solid black";
+        if (curr_col === pair.color) {
+            col.style.border = "3px solid black";
+        }
+    });
 }
