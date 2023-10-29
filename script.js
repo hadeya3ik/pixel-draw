@@ -40,7 +40,7 @@ colorPairs.forEach(pair => {
     });
 });
 
-// 
+// update canvas
 function render_canvas() {
     while (canvas.firstChild) {
         canvas.removeChild(canvas.firstChild);
