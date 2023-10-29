@@ -57,6 +57,18 @@ function render_canvas() {
             border: 0.5px solid black; flex: 1; margin: 0px;`;
             row.appendChild(pixel);
             pixel.addEventListener('click', () => pixel.style.backgroundColor=curr_col);
+
+            pixel.addEventListener('mousedown', () => {
+                if (event.buttons === 1) {
+                  pixel.style.backgroundColor = curr_col;
+                }
+              });
+        
+              pixel.addEventListener('mouseenter', () => {
+                if (event.buttons === 1) {
+                  pixel.style.backgroundColor = curr_col;
+                }
+              });
         }
     }
 }
