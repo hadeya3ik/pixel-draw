@@ -4,6 +4,13 @@
     padding: 0px; 
 }
 
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* styles for heading */
 
 .window {
