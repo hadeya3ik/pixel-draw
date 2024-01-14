@@ -1,0 +1,89 @@
+body {
+    font-family: "Space Mono", monospace;
+}
+
+.outline_3d {
+    border: 2px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.outline_3d_bold {
+    border-radius: 5px; 
+    border: 3px solid black;
+    border-right: 8px solid black;
+    border-bottom: 8px solid black;
+} 
+
+.login-icon {
+    padding-right: 2rem;
+    height: 20px;;
+    padding: 2px;
+}
+
+.setting_title {
+    width: fit-content;
+    margin: 1rem;
+    padding: 0 1rem; 
+}
+
+#setting_button, #sizeInput {
+    font-family: "Space Mono", monospace;
+    padding: 0 1rem; 
+    background-color: white;
+    border-radius: 5px;
+    margin: 1rem;
+}
+
+#sizeInput {
+    background-color: black;
+    color: white;
+    width: 40px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.restart_container {
+    background-color: black;
+    width: 100%;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings .setting_content {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: space-between;
+    height: 100%;
+}
+
+ .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.canvas_container {
+    overflow: hidden;
+}
+
+.settings {
+    flex: 1; 
+    border-right: 2px solid black; 
+} 
+
+.box {
+    padding-top: 5rem;
+    padding-bottom: rem;
+}

@@ -1,0 +1,61 @@
+* {
+    white-space: nowrap;
+    margin: 0px; 
+    padding: 0px; 
+}
+
+/* styles for heading */
+
+.window {
+    border: 2px solid black; 
+    border-bottom: 5px solid black; 
+    border-right: 5px solid black; 
+    margin: 1rem; 
+    border-radius: 15px; 
+    max-width: 900px;
+}
+
+.header {
+    border-bottom: 2px solid black; 
+    font-size: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#date-time  {
+    font-family: "Space Mono", monospace;
+    padding-right: 1rem;
+    font-size: 12px;
+}
+
+.circle_icons {
+    margin-left: 1rem;
+    display: flex;
+    gap: 1rem; 
+}
+
+#circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;
+    margin-top: 1px
+}
+
+/* styles for content*/
+
+.canvas {
+    margin: 0.5rem;
+    border: 10px solid black;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#canvas_title {
+    border-left: 2px solid black; 
+    display: flex;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding-left: 1rem;
+    justify-content: flex-start;
+}
+

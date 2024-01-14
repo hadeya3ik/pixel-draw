@@ -1,44 +1,32 @@
 // init
 const canvas = document.querySelector('.canvas');
-const size_input = document.querySelector('input');
+const size_input = document.querySelector('input[type="number"]');
+const colorPicker = document.querySelector('#colorPicker');
 let pixel_w = size_input.value;
-let canvas_w = 700;
+let canvas_w = 500;
+let curr_col = colorPicker.value;
+
+
 
 // changing size
 const size_button = document.querySelector('.size');
-size_button.addEventListener('click', () => { pixel_w = size_input.value; render_canvas(); console.log("size changed to: " +  size_input.value)})
+size_button.addEventListener('click', () => {
+    pixel_w = size_input.value;
+    render_canvas();
+    console.log("Size changed to: " + size_input.value);
+})
 
 // reset button
 const reset_button = document.querySelector('.restart');
 reset_button.addEventListener('click', () => render_canvas())
 
+// color picker event listener
+colorPicker.addEventListener('input', () => {
+    curr_col = colorPicker.value;
+});
+
 // initial canvas
 render_canvas();
-
-// color 
-let curr_col = "gray";
-
-// map
-const colorPairs = [
-    { class: 'a', color: 'lightblue' },
-    { class: 'b', color: 'lavender' },
-    { class: 'c', color: 'lightgoldenrodyellow' },
-    { class: 'd', color: 'pink' },
-    { class: 'e', color: 'peachpuff' },
-    { class: 'f', color: 'darkseagreen' },
-    { class: 'g', color: 'gray' },
-    { class: 'h', color: 'white' },
-];
-
-// adding event listeners
-colorPairs.forEach(pair => {
-    const col = document.querySelector(`.${pair.class}`);
-    col.style.backgroundColor = pair.color;
-    col.addEventListener('click', () => {
-        curr_col = pair.color;
-        update_color_bar();
-    });
-});
 
 // update canvas
 function render_canvas() {
@@ -83,3 +71,19 @@ function update_color_bar() {
         }
     });
 }
+
+// date & time 
+
+function formatDate(date) {
+    const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+function updateDateTime() {
+    const now = new Date();
+    const dateTimeStr = formatDate(now);
+    document.getElementById('date-time').textContent = dateTimeStr;
+}
+
+updateDateTime();
+setInterval(updateDateTime, 60000);
